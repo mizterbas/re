@@ -209,6 +209,7 @@ def main(_):
       "qqp": classifier_utils.QqpProcessor,
       "qnli": classifier_utils.QnliProcessor,
       "wnli": classifier_utils.WnliProcessor,
+      "mednli": classifier_utils.MedNLIProcessor
   }
 
   if not (FLAGS.do_train or FLAGS.do_eval or FLAGS.do_predict or
