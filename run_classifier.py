@@ -212,7 +212,8 @@ def main(_):
       "mednli": classifier_utils.MedNLIProcessor,
       "chemprot": classifier_utils.ChemProtProcessor,
       "i2b2": classifier_utils.i2b2Processor,
-      "clefe": classifier_utils.CLEFEProcessor
+      "clefe": classifier_utils.CLEFEProcessor,
+      "ddi": classifier_utils.DDIProcessor
   }
 
   if not (FLAGS.do_train or FLAGS.do_eval or FLAGS.do_predict or
