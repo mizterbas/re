@@ -376,6 +376,50 @@ class i2b2Processor(DataProcessor):
       examples.append(InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
     return examples
   
+class BC5CDRDiseaseProcessor(DataProcessor):
+  """Processor for the BC5CDR-disease data set (GLUE version)."""
+
+  def get_train_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
+
+  def get_dev_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        self._read_tsv(os.path.join(data_dir, "dev.tsv")), "dev")
+
+  def get_test_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        self._read_tsv(os.path.join(data_dir, "test.tsv")), "test")
+
+  def get_labels(self):
+    """See base class."""
+    #return ["0", "1"]
+    return ["b-disease", "i-disease","o","x"]
+
+  def _create_examples(self, lines, set_type):
+    """Creates examples for the training and dev sets."""
+    examples = []
+    for (i, line) in enumerate(lines):
+      if i == 0:
+        continue
+      if set_type != "test":
+        guid = "%s-%s" % (set_type, i)
+        text_a = self.process_text(line[0])
+        label = self.process_text(line[1])
+      else:
+        #guid = self.process_text(line[0])
+        #guid = "%s-%s" % (set_type, line[0])
+        guid = "%s-%s" % (set_type, i)
+        #text_a = self.process_text(line[1])
+        text_a = self.process_text(line[0])
+        label = "o"
+      examples.append(
+          InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
+    return examples  
+  
 class CLEFEProcessor(DataProcessor):
   """Processor for the BC5CDR-disease data set (GLUE version)."""
 
