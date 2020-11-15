@@ -578,8 +578,8 @@ class StsbProcessor(DataProcessor):
         continue
       guid = self.process_text(line[0])
       # guid = "%s-%s" % (set_type, line[0])
-      text_a = self.process_text(line[7])
-      text_b = self.process_text(line[8])
+      text_a = self.process_text(line[-3])
+      text_b = self.process_text(line[-2])
       if set_type != "test":
         label = float(line[-1])
       else:
