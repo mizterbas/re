@@ -215,7 +215,7 @@ def main(_):
       "clefe": classifier_utils.CLEFEProcessor,
       "ddi": classifier_utils.DDIProcessor,
       "bc5cdr-d": classifier_utils.BC5CDRDiseaseProcessor,
-      "GAD": classifier_utils.GADProcessor
+      "gad": classifier_utils.GADProcessor
   }
 
   if not (FLAGS.do_train or FLAGS.do_eval or FLAGS.do_predict or
